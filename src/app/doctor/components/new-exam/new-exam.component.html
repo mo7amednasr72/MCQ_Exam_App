@@ -1,0 +1,100 @@
+<div class="new-exam">
+    <mat-horizontal-stepper linear #stepper [selectedIndex]="stepperIndex">
+        <mat-step label="Subject Name" [completed]="startAdd">
+            <div class="AddSubject">
+                <div>Subject Name:</div>
+                <mat-form-field appearance="fill" color="warn">
+                    <mat-label>Subject Name</mat-label>
+                    <input matInput type="text"  [formControl]="name" >
+                </mat-form-field>
+                <button color="warn"  mat-raised-button matStepperNext (click)="start()">{{startAdd ? "Set-up Exam" : "Start"}}</button>
+            </div>
+        </mat-step>
+        <mat-step label="{{subjectName}} Questions!" [completed]="openPreview">
+            <div class="question">
+                <form [formGroup]="questionForm">
+                    <mat-form-field appearance="outline" color="warn" class="queiz">
+                        <mat-label>Question</mat-label>
+                        <input matInput type="text"  formControlName="question">
+                    </mat-form-field>
+
+                <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="answer1" (change)="getCorrectAns($event)"  color="warn"></mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>Answer A</mat-label>
+                                <input matInput type="text"  formControlName="answer1">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="answer2" (change)="getCorrectAns($event)" color="warn"></mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>Answer B</mat-label>
+                                <input matInput type="text"  formControlName="answer2">
+                            </mat-form-field>
+                        
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                        <mat-radio-button value="answer3" (change)="getCorrectAns($event)" color="warn"></mat-radio-button>
+                        <mat-form-field color="warn">
+                                <mat-label>Answer C</mat-label>
+                                <input matInput type="text"   formControlName="answer3">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <mat-radio-button value="answer4" (change)="getCorrectAns($event)" color="warn"></mat-radio-button>
+                            <mat-form-field color="warn">
+                                <mat-label>Answer D</mat-label>
+                                <input matInput type="text" formControlName="answer4" >
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="questBtn">
+                        <div>
+                            <button mat-raised-button class="btn btn-success" matStepperNext (click)="saveExam()" [disabled]="questions.length == 0">{{openPreview ? 'Preview Exam' : 'Save Exam'}}</button>
+                            <button mat-raised-button color="warn" matStepperPrevious (click)="cancelExam()">Cancel Exam</button>
+                        </div>
+                        <div>
+                            <button mat-raised-button color="accent" (click)="removeQuestion()">Remove</button>
+                            <button mat-raised-button color="primary" (click)="saveQuestion()"  [disabled]="questionForm.invalid" >Save</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+        <mat-step label="Exam Preview!" completed="false">
+            <div class="examBox">
+                <div class="examhead text-center"><h2>{{subjectName}} Exam!</h2></div>
+                <div class="quizBox" *ngFor="let item of questions; let indx = index">
+                    <strong><span class="text-danger">Q{{indx + 1}})</span> {{item.question}}</strong>
+                    <hr>
+                    <div class="row" dir="ltr">
+                        <div class="col-sm-12">
+                            A. {{item.answer1}} 
+                        </div>
+                        <div class="col-sm-12">
+                            B. {{item.answer2}}
+                        </div>
+                        <div class="col-sm-12">
+                            C. {{item.answer3}}
+                        </div>
+                        <div class="col-sm-12">
+                            D. {{item.answer4}}
+                        </div>
+                        <div class="col-sm-12">
+                            <span class="text-success">Correct Answer: {{item.correctAnswer}}</span>
+                        </div>
+                    </div>
+                    <div class="text-left">
+                        <button mat-raised-button  class="btn btn-danger" (click)="removeAtPreview(indx)">Delete</button>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+  </div>

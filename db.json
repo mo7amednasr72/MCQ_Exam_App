@@ -1,0 +1,89 @@
+{
+  "students": [
+    {
+      "username": "test",
+      "email": "test@test.com",
+      "password": "123",
+      "takenExams": [
+        {
+          "name": "Math",
+          "id": "1",
+          "degree": 2
+        }
+      ],
+      "id": 1
+    },
+    {
+      "username": "muhammad",
+      "email": "mo@test.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "username": "Muhammad Nasr",
+      "email": "muhammad@gmail.com",
+      "password": "123",
+      "takenExams": [
+        {
+          "name": "Math",
+          "id": "1",
+          "degree": 2
+        }
+      ],
+      "id": 3
+    },
+    {
+      "username": "Ahmad",
+      "email": "ahmad@gmail.com",
+      "password": "123",
+      "takenExams": [
+        {
+          "name": "Math",
+          "id": "1",
+          "degree": 2
+        }
+      ],
+      "id": 4
+    }
+  ],
+  "professor": [
+    {
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "123",
+      "id": 1
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Math",
+      "questions": [
+        {
+          "question": "2 + 2 = ",
+          "answer1": "1",
+          "answer2": "2",
+          "answer3": "4",
+          "answer4": "3",
+          "correctAnswer": "4"
+        },
+        {
+          "question": "3 + 3",
+          "answer1": "5",
+          "answer2": "6",
+          "answer3": "2",
+          "answer4": "3",
+          "correctAnswer": "6"
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "login": [
+    {
+      "username": "admin",
+      "role": "professor",
+      "userId": 1,
+      "id": 1
+    }
+  ]
+}
